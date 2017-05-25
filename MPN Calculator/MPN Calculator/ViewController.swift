@@ -9,17 +9,31 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var numberPositive1: UITextField!
+    @IBOutlet weak var numberPositive2: UITextField!
+    @IBOutlet weak var numberPositive3: UITextField!
+    
+    @IBOutlet weak var numberTubes1: UITextField!
+    @IBOutlet weak var numberTubes2: UITextField!
+    @IBOutlet weak var numberTubes3: UITextField!
+    
+    @IBOutlet weak var volume1: UITextField!
+    @IBOutlet weak var volume2: UITextField!
+    @IBOutlet weak var volume3: UITextField!
+    
+    @IBOutlet weak var lcl: UILabel!
+    @IBOutlet weak var ucl: UILabel!
+    @IBOutlet weak var mpn: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    @IBAction func calculateButtonPressed(_ sender: Any) {
     }
-
-
+    
+    
 }
 
