@@ -29,27 +29,52 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissNumpad")
+//        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    func dismissNumpad() {
+        view.endEditing(true)
     }
     
     @IBAction func calculateButtonPressed(_ sender: Any) {
-        
         let validation : Bool = validateFields()
-        
-        if (validation == false) {
+        if validation == false {
             presentAlert()
+        } else {
+            initialGuess()
         }
 
-        
     }
     
     
     func initialGuess() {
         
         let numberOfPostives = [Double(numberPositive1.text!)!, Double(numberPositive2.text!)!, Double(numberPositive3.text!)!]
-        
         let numberOfTubes = [Double(numberTubes1.text!)!, Double(numberTubes2.text!)!, Double(numberTubes3.text!)!]
-        
         let volsInoc = [Double(volume1.text!)!, Double(volume2.text!)!, Double(volume3.text!)!]
+        
+        var positives = Double()
+        var tubes = Double()
+        var vol = Double()
+        
+        var guess = Double()
+        
+        for (index, value) in numberOfPostives.enumerated() {
+            if 0 < value && value < numberOfTubes[index] {
+                positives = value
+                tubes = numberOfTubes[index]
+                vol = volsInoc[index]
+                break
+            }
+        }
+        print(positives)
+        print(tubes)
+        print(vol)
+        guess = -(1/vol)*log((tubes-positives)/tubes)
+        print(guess)
+        
         
     }
     
@@ -57,6 +82,8 @@ class ViewController: UIViewController {
         let mandatoryFields = [numberPositive1, numberPositive2, numberPositive3, numberTubes1, numberTubes2, numberTubes3, volume1, volume2, volume3]
         
         var result = Bool()
+        
+        //Need logic to handle .01 versus 0.01
         
         for each in mandatoryFields {
             if each?.text == "" {
@@ -67,6 +94,7 @@ class ViewController: UIViewController {
         }
         
         return result
+
     }
     
     func presentAlert() {
