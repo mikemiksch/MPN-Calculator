@@ -32,8 +32,49 @@ class ViewController: UIViewController {
     }
     
     @IBAction func calculateButtonPressed(_ sender: Any) {
+        
+        let validation : Bool = validateFields()
+        
+        if (validation == false) {
+            presentAlert()
+        }
+
+        
     }
     
     
+    func initialGuess() {
+        
+        let numberOfPostives = [Double(numberPositive1.text!)!, Double(numberPositive2.text!)!, Double(numberPositive3.text!)!]
+        
+        let numberOfTubes = [Double(numberTubes1.text!)!, Double(numberTubes2.text!)!, Double(numberTubes3.text!)!]
+        
+        let volsInoc = [Double(volume1.text!)!, Double(volume2.text!)!, Double(volume3.text!)!]
+        
+    }
+    
+    func validateFields() -> Bool {
+        let mandatoryFields = [numberPositive1, numberPositive2, numberPositive3, numberTubes1, numberTubes2, numberTubes3, volume1, volume2, volume3]
+        
+        var result = Bool()
+        
+        for each in mandatoryFields {
+            if each?.text == "" {
+                result = false
+            } else {
+                result = true
+            }
+        }
+        
+        return result
+    }
+    
+    func presentAlert() {
+        let alert = UIAlertController(title: nil, message: "Please complete all fields", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:nil)
+        alert.addAction(ok)
+        self.present(alert, animated: true, completion: nil)
+    }
+
 }
 
