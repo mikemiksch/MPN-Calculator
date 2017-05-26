@@ -55,6 +55,7 @@ class ViewController: UIViewController {
         } else {
             initialGuess()
             getLTermRTermConfidenceInterval()
+            calculateActualMPN()
         }
 
     }
@@ -102,26 +103,19 @@ class ViewController: UIViewController {
         print(self.confidenceInterval)
     }
     
-//    func sumLTerms() {
-//        for (index, value) in numberOfTubesArray.enumerated() {
-//            if value > 0 {
-//                self.lTermSum += volsInocArray[index]*numberOfPositivesArray[index]/(1-exp(-volsInocArray[index]*self.mostProbableNumber))
-//                print(self.lTermSum)
-//            }
+    
+    func calculateActualMPN() {
+        var newMPN = self.mostProbableNumber * pow(10, (1-self.rTermSum/self.lTermSum))
+        print(newMPN)
+//        while ((self.mostProbableNumber / newMPN) * 100) <= 0.01 {
+//            self.mostProbableNumber = newMPN
+//            newMPN = self.mostProbableNumber * pow(10, (1-self.rTermSum/self.lTermSum))
 //        }
-//        
-//        print(self.lTermSum)
-//    }
-//    
-//    func sumRTerms() {
-//        for (index, value) in numberOfTubesArray.enumerated() {
-//            if value > 0 {
-//                self.rTermSum += volsInocArray[index] * numberOfTubesArray[index]
-//                print(self.rTermSum)
-//            }
-//        }
-//    }
+    }
+    
 
+    
+// Handling invalid entries
     func validateFields() -> Bool {
         let mandatoryFields = [numberPositive1, numberPositive2, numberPositive3, numberTubes1, numberTubes2, numberTubes3, volume1, volume2, volume3]
         
