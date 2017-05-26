@@ -54,8 +54,7 @@ class ViewController: UIViewController {
             presentAlert()
         } else {
             initialGuess()
-            sumLTerms()
-            sumRTerms()
+            getLTermRTermConfidenceInterval()
         }
 
     }
@@ -81,30 +80,48 @@ class ViewController: UIViewController {
             }
         }
 
-        self.mostProbableNumber = -(1.0 / vol) * log10((tubes-positives) / tubes)
+//        self.mostProbableNumber = -(1.0 / vol) * log10((tubes-positives) / tubes)
+        self.mostProbableNumber = 17
         print(self.mostProbableNumber)
     }
     
-    func sumLTerms() {
-        for (index, value) in numberOfTubesArray.enumerated() {
+    func getLTermRTermConfidenceInterval() {
+        for (index, value) in self.numberOfTubesArray.enumerated() {
             if value > 0 {
-                self.lTermSum += volsInocArray[index]*numberOfPositivesArray[index]/(1-exp(-volsInocArray[index]*self.mostProbableNumber))
-                print(self.lTermSum)
+                
+                self.lTermSum += self.volsInocArray[index]*self.numberOfPositivesArray[index]/(1-exp(-self.volsInocArray[index]*self.mostProbableNumber))
+                
+                self.rTermSum += self.volsInocArray[index] * self.numberOfTubesArray[index]
+                
+                self.confidenceInterval += self.numberOfTubesArray[index] * pow(self.volsInocArray[index], 2) / (exp(self.volsInocArray[index] * self.mostProbableNumber)-1)
             }
         }
         
         print(self.lTermSum)
+        print(self.rTermSum)
+        print(self.confidenceInterval)
     }
     
-    func sumRTerms() {
-        for (index, value) in numberOfTubesArray.enumerated() {
-            if value > 0 {
-                self.rTermSum += volsInocArray[index] * numberOfTubesArray[index]
-                print(self.rTermSum)
-            }
-        }
-    }
-    
+//    func sumLTerms() {
+//        for (index, value) in numberOfTubesArray.enumerated() {
+//            if value > 0 {
+//                self.lTermSum += volsInocArray[index]*numberOfPositivesArray[index]/(1-exp(-volsInocArray[index]*self.mostProbableNumber))
+//                print(self.lTermSum)
+//            }
+//        }
+//        
+//        print(self.lTermSum)
+//    }
+//    
+//    func sumRTerms() {
+//        for (index, value) in numberOfTubesArray.enumerated() {
+//            if value > 0 {
+//                self.rTermSum += volsInocArray[index] * numberOfTubesArray[index]
+//                print(self.rTermSum)
+//            }
+//        }
+//    }
+
     func validateFields() -> Bool {
         let mandatoryFields = [numberPositive1, numberPositive2, numberPositive3, numberTubes1, numberTubes2, numberTubes3, volume1, volume2, volume3]
         
