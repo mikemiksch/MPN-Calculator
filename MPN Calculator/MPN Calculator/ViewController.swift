@@ -72,7 +72,7 @@ class ViewController: UIViewController {
         print(positives)
         print(tubes)
         print(vol)
-        guess = -(1/vol)*log((tubes-positives)/tubes)
+        guess = -(1.0 / vol) * log10((tubes-positives) / tubes)
         print(guess)
         
         
