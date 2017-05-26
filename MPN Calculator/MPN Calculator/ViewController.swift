@@ -22,9 +22,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var volume2: UITextField!
     @IBOutlet weak var volume3: UITextField!
     
-    @IBOutlet weak var lcl: UILabel!
-    @IBOutlet weak var ucl: UILabel!
-    @IBOutlet weak var mpn: UILabel!
+    @IBOutlet weak var lclLabel: UILabel!
+    @IBOutlet weak var uclLabel: UILabel!
+    @IBOutlet weak var mpnLabel: UILabel!
     
     
     override func viewDidLoad() {
