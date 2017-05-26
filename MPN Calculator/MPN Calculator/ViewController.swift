@@ -25,11 +25,21 @@ class ViewController: UIViewController {
     @IBOutlet weak var lclLabel: UILabel!
     @IBOutlet weak var uclLabel: UILabel!
     @IBOutlet weak var mpnLabel: UILabel!
+    @IBOutlet weak var confidenceLabel: UILabel!
+    
+    var numberOfPositivesArray = [Double]()
+    var numberOfTubesArray = [Double]()
+    var volsInocArray = [Double]()
+    
+    var mostProbableNumber = Double()
+    var confidenceInterval = Double()
+    var lTermSum = Double()
+    var rTermSum = Double()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissNumpad")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissNumpad))
 //        tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
@@ -44,6 +54,8 @@ class ViewController: UIViewController {
             presentAlert()
         } else {
             initialGuess()
+            sumLTerms()
+            sumRTerms()
         }
 
     }
@@ -51,31 +63,46 @@ class ViewController: UIViewController {
     
     func initialGuess() {
         
-        let numberOfPostives = [Double(numberPositive1.text!)!, Double(numberPositive2.text!)!, Double(numberPositive3.text!)!]
-        let numberOfTubes = [Double(numberTubes1.text!)!, Double(numberTubes2.text!)!, Double(numberTubes3.text!)!]
-        let volsInoc = [Double(volume1.text!)!, Double(volume2.text!)!, Double(volume3.text!)!]
+        self.numberOfPositivesArray = [Double(numberPositive1.text!)!, Double(numberPositive2.text!)!, Double(numberPositive3.text!)!]
+        self.numberOfTubesArray = [Double(numberTubes1.text!)!, Double(numberTubes2.text!)!, Double(numberTubes3.text!)!]
+        self.volsInocArray = [Double(volume1.text!)!, Double(volume2.text!)!, Double(volume3.text!)!]
         
         var positives = Double()
         var tubes = Double()
         var vol = Double()
         
-        var guess = Double()
         
-        for (index, value) in numberOfPostives.enumerated() {
-            if 0 < value && value < numberOfTubes[index] {
+        for (index, value) in self.numberOfPositivesArray.enumerated() {
+            if 0 < value && value < self.numberOfTubesArray[index] {
                 positives = value
-                tubes = numberOfTubes[index]
-                vol = volsInoc[index]
+                tubes = self.numberOfTubesArray[index]
+                vol = self.volsInocArray[index]
                 break
             }
         }
-        print(positives)
-        print(tubes)
-        print(vol)
-        guess = -(1.0 / vol) * log10((tubes-positives) / tubes)
-        print(guess)
+
+        self.mostProbableNumber = -(1.0 / vol) * log10((tubes-positives) / tubes)
+        print(self.mostProbableNumber)
+    }
+    
+    func sumLTerms() {
+        for (index, value) in numberOfTubesArray.enumerated() {
+            if value > 0 {
+                self.lTermSum += volsInocArray[index]*numberOfPositivesArray[index]/(1-exp(-volsInocArray[index]*self.mostProbableNumber))
+                print(self.lTermSum)
+            }
+        }
         
-        
+        print(self.lTermSum)
+    }
+    
+    func sumRTerms() {
+        for (index, value) in numberOfTubesArray.enumerated() {
+            if value > 0 {
+                self.rTermSum += volsInocArray[index] * numberOfTubesArray[index]
+                print(self.rTermSum)
+            }
+        }
     }
     
     func validateFields() -> Bool {
