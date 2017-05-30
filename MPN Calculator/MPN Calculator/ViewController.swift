@@ -40,7 +40,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissNumpad))
-//        tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
     
