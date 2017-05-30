@@ -55,7 +55,12 @@ class ViewController: UIViewController {
         } else {
             initialGuess()
             getLTermRTermConfidenceInterval()
-            calculateActualMPN()
+            self.lclLabel.text = "\(Double(round(calculateLCL() * 1000) / 1000))"
+            self.uclLabel.text = "\(Double(round(calculateUCL() * 1000) / 1000))"
+            self.confidenceLabel.text = "\(Double(round(confidenceInterval * 1000) / 1000))"
+            self.mpnLabel.text = "\(Double(round(calculateActualMPN() * 1000) / 1000))"
+            
+            
         }
 
     }
@@ -81,8 +86,7 @@ class ViewController: UIViewController {
             }
         }
 
-//        self.mostProbableNumber = -(1.0 / vol) * log10((tubes-positives) / tubes)
-        self.mostProbableNumber = 17
+        self.mostProbableNumber = -(1.0 / vol) * log10((tubes-positives) / tubes)
         print(self.mostProbableNumber)
     }
     
@@ -97,20 +101,31 @@ class ViewController: UIViewController {
                 self.confidenceInterval += self.numberOfTubesArray[index] * pow(self.volsInocArray[index], 2) / (exp(self.volsInocArray[index] * self.mostProbableNumber)-1)
             }
         }
-        
-        print(self.lTermSum)
-        print(self.rTermSum)
-        print(self.confidenceInterval)
     }
     
     
-    func calculateActualMPN() {
+    func calculateActualMPN() -> Double {
         var newMPN = self.mostProbableNumber * pow(10, (1-self.rTermSum/self.lTermSum))
-        print(newMPN)
-//        while ((self.mostProbableNumber / newMPN) * 100) <= 0.01 {
-//            self.mostProbableNumber = newMPN
-//            newMPN = self.mostProbableNumber * pow(10, (1-self.rTermSum/self.lTermSum))
-//        }
+        while ((self.mostProbableNumber / newMPN) * 100) < 99.99 {
+            print(self.mostProbableNumber)
+            self.mostProbableNumber = newMPN
+            getLTermRTermConfidenceInterval()
+            newMPN = self.mostProbableNumber * pow(10, (1-self.rTermSum/self.lTermSum))
+        }
+        return newMPN
+    }
+    
+    func calculateUCL() -> Double {
+       let uclValue = exp(log(self.mostProbableNumber) + 1.96 / (self.mostProbableNumber * self.confidenceInterval.squareRoot()))
+        
+        return uclValue
+    }
+    
+    func calculateLCL() -> Double {
+        let lclValue = exp(log(self.mostProbableNumber) - 1.96 / (self.mostProbableNumber * self.confidenceInterval.squareRoot()))
+        
+        return lclValue
+
     }
     
 
