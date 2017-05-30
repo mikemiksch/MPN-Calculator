@@ -59,8 +59,13 @@ class ViewController: UIViewController {
             self.uclLabel.text = "\(Double(round(calculateUCL() * 1000) / 1000))"
             self.confidenceLabel.text = "\(Double(round(confidenceInterval * 1000) / 1000))"
             self.mpnLabel.text = "\(Double(round(calculateActualMPN() * 1000) / 1000))"
-            
-            
+            self.numberOfTubesArray.removeAll()
+            self.numberOfPositivesArray.removeAll()
+            self.volsInocArray.removeAll()
+            self.mostProbableNumber = 0
+            self.confidenceInterval = 0
+            self.lTermSum = 0
+            self.rTermSum = 0
         }
 
     }
