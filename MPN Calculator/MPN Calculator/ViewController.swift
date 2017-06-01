@@ -91,16 +91,12 @@ class ViewController: UIViewController {
     }
     
     func getLTermRTermConfidenceInterval() {
-        print("Get L Term firing")
         for (index, value) in self.numberOfTubesArray.enumerated() {
             if value > 0 {
                 
                 self.lTermSum += self.volsInocArray[index]*self.numberOfPositivesArray[index]/(1-exp(-self.volsInocArray[index]*self.mostProbableNumber))
-                print(self.lTermSum)
                 self.rTermSum += (self.volsInocArray[index] * self.numberOfTubesArray[index])
-                print(self.rTermSum)
                 self.confidenceInterval += self.numberOfTubesArray[index] * pow(self.volsInocArray[index], 2) / (exp(self.volsInocArray[index] * self.mostProbableNumber)-1)
-                print(self.confidenceInterval)
             }
         }
     }
@@ -109,18 +105,16 @@ class ViewController: UIViewController {
     func calculateActualMPN() -> Double {
         var newMPN = self.mostProbableNumber * pow(10, (1-self.rTermSum/self.lTermSum))
         while ((self.mostProbableNumber / newMPN) * 100) < 99.99 {
-            print("New MPN: \(newMPN)")
-            print("New L Term Sum: \(self.lTermSum)")
-            print("Confidence interval: \(self.confidenceInterval)")
-            print((self.mostProbableNumber / newMPN) * 100)
             self.mostProbableNumber = newMPN
             resetValues()
-            print("L Term Sum reset: \(self.lTermSum)")
-            print("Confidence interval reset: \(self.confidenceInterval)")
             getLTermRTermConfidenceInterval()
             newMPN = self.mostProbableNumber * pow(10, (1-self.rTermSum/self.lTermSum))
         }
-        return newMPN
+        print(self.lTermSum)
+        print(self.rTermSum)
+        print(self.confidenceInterval)
+        self.mostProbableNumber = newMPN
+        return self.mostProbableNumber
     }
     
     func calculateUCL() -> Double {
