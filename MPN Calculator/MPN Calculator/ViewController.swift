@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var lclLabel: UILabel!
     @IBOutlet weak var uclLabel: UILabel!
     @IBOutlet weak var mpnLabel: UILabel!
-    @IBOutlet weak var confidenceLabel: UILabel!
+
     
     var numberOfPositivesArray = [Double]()
     var numberOfTubesArray = [Double]()
@@ -114,8 +114,6 @@ class ViewController: UIViewController {
             print("New L Term Sum: \(self.lTermSum)")
             print("Confidence interval: \(self.confidenceInterval)")
             print((self.mostProbableNumber / newMPN) * 100)
-            self.lTermSum = 0
-            self.confidenceInterval = 0
             self.mostProbableNumber = newMPN
             getLTermRTermConfidenceInterval()
             newMPN = self.mostProbableNumber * pow(10, (1-self.rTermSum/self.lTermSum))
