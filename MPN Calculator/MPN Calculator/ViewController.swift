@@ -57,14 +57,11 @@ class ViewController: UIViewController {
             self.lclLabel.text = "\(Double(round(calculateLCL() * 1000) / 1000))"
             self.uclLabel.text = "\(Double(round(calculateUCL() * 1000) / 1000))"
             self.mpnLabel.text = "\(Double(round(calculateActualMPN() * 1000) / 1000))"
-            self.confidenceLabel.text = "\(Double(round(confidenceInterval * 1000) / 1000))"
             self.numberOfTubesArray.removeAll()
             self.numberOfPositivesArray.removeAll()
             self.volsInocArray.removeAll()
             self.mostProbableNumber = 0
-            self.confidenceInterval = 0
-            self.lTermSum = 0
-            self.rTermSum = 0
+            resetValues()
         }
 
     }
@@ -94,14 +91,16 @@ class ViewController: UIViewController {
     }
     
     func getLTermRTermConfidenceInterval() {
+        print("Get L Term firing")
         for (index, value) in self.numberOfTubesArray.enumerated() {
             if value > 0 {
                 
                 self.lTermSum += self.volsInocArray[index]*self.numberOfPositivesArray[index]/(1-exp(-self.volsInocArray[index]*self.mostProbableNumber))
-                
+                print(self.lTermSum)
                 self.rTermSum += (self.volsInocArray[index] * self.numberOfTubesArray[index])
-                
+                print(self.rTermSum)
                 self.confidenceInterval += self.numberOfTubesArray[index] * pow(self.volsInocArray[index], 2) / (exp(self.volsInocArray[index] * self.mostProbableNumber)-1)
+                print(self.confidenceInterval)
             }
         }
     }
@@ -115,6 +114,9 @@ class ViewController: UIViewController {
             print("Confidence interval: \(self.confidenceInterval)")
             print((self.mostProbableNumber / newMPN) * 100)
             self.mostProbableNumber = newMPN
+            resetValues()
+            print("L Term Sum reset: \(self.lTermSum)")
+            print("Confidence interval reset: \(self.confidenceInterval)")
             getLTermRTermConfidenceInterval()
             newMPN = self.mostProbableNumber * pow(10, (1-self.rTermSum/self.lTermSum))
         }
@@ -134,7 +136,13 @@ class ViewController: UIViewController {
 
     }
     
-
+    func resetValues() {
+        self.lTermSum = 0
+        self.rTermSum = 0
+        self.confidenceInterval = 0
+    }
+    
+    
     
 // Handling invalid entries
     func validateFields() -> Bool {
