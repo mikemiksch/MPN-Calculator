@@ -22,9 +22,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var volume2: UITextField!
     @IBOutlet weak var volume3: UITextField!
     
-    @IBOutlet weak var lclLabel: UILabel!
-    @IBOutlet weak var uclLabel: UILabel!
-    @IBOutlet weak var mpnLabel: UILabel!
+    @IBOutlet weak var mpnLabelTitle: UILabel!
+    @IBOutlet weak var lclLabelTitle: UILabel!
+    @IBOutlet weak var uclLabelTitle: UILabel!
+    
+    @IBOutlet weak var lclLabelField: UILabel!
+    @IBOutlet weak var uclLabelField: UILabel!
+    @IBOutlet weak var mpnLabelField: UILabel!
 
     
     var numberOfPositivesArray = [Double]()
@@ -54,9 +58,9 @@ class ViewController: UIViewController {
         } else {
             initialGuess()
             getLTermRTermConfidenceInterval()
-            self.mpnLabel.text = "\(Double(round(calculateActualMPN() * 1000) / 1000))"
-            self.lclLabel.text = "\(Double(round(calculateLCL() * 1000) / 1000))"
-            self.uclLabel.text = "\(Double(round(calculateUCL() * 1000) / 1000))"
+            self.mpnLabelField.text = "\(Double(round(calculateActualMPN() * 1000) / 1000))"
+            self.lclLabelField.text = "\(Double(round(calculateLCL() * 1000) / 1000))"
+            self.uclLabelField.text = "\(Double(round(calculateUCL() * 1000) / 1000))"
             self.numberOfTubesArray.removeAll()
             self.numberOfPositivesArray.removeAll()
             self.volsInocArray.removeAll()
@@ -66,6 +70,20 @@ class ViewController: UIViewController {
 
     }
     
+    @IBAction func clearButtonPressed(_ sender: Any) {
+        self.numberPositive1.text = ""
+        self.numberPositive2.text = ""
+        self.numberPositive3.text = ""
+        
+        self.numberTubes1.text = ""
+        self.numberTubes2.text = ""
+        self.numberTubes3.text = ""
+        
+        self.volume1.text = ""
+        self.volume2.text = ""
+        self.volume3.text = ""
+        
+    }
     
     func initialGuess() {
         
