@@ -45,6 +45,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissNumpad))
         view.addGestureRecognizer(tap)
+        hide()
     }
     
     func dismissNumpad() {
@@ -66,11 +67,13 @@ class ViewController: UIViewController {
             self.volsInocArray.removeAll()
             self.mostProbableNumber = 0
             resetValues()
+            show()
         }
 
     }
     
     @IBAction func clearButtonPressed(_ sender: Any) {
+        hide()
         self.numberPositive1.text = ""
         self.numberPositive2.text = ""
         self.numberPositive3.text = ""
@@ -83,6 +86,24 @@ class ViewController: UIViewController {
         self.volume2.text = ""
         self.volume3.text = ""
         
+    }
+    
+    func show() {
+        self.lclLabelField.isHidden = false
+        self.lclLabelTitle.isHidden = false
+        self.uclLabelField.isHidden = false
+        self.uclLabelTitle.isHidden = false
+        self.mpnLabelField.isHidden = false
+        self.mpnLabelTitle.isHidden = false
+    }
+    
+    func hide() {
+        self.lclLabelField.isHidden = true
+        self.lclLabelTitle.isHidden = true
+        self.uclLabelField.isHidden = true
+        self.uclLabelTitle.isHidden = true
+        self.mpnLabelField.isHidden = true
+        self.mpnLabelTitle.isHidden = true
     }
     
     func initialGuess() {
