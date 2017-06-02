@@ -54,9 +54,9 @@ class ViewController: UIViewController {
         } else {
             initialGuess()
             getLTermRTermConfidenceInterval()
+            self.mpnLabel.text = "\(Double(round(calculateActualMPN() * 1000) / 1000))"
             self.lclLabel.text = "\(Double(round(calculateLCL() * 1000) / 1000))"
             self.uclLabel.text = "\(Double(round(calculateUCL() * 1000) / 1000))"
-            self.mpnLabel.text = "\(Double(round(calculateActualMPN() * 1000) / 1000))"
             self.numberOfTubesArray.removeAll()
             self.numberOfPositivesArray.removeAll()
             self.volsInocArray.removeAll()
