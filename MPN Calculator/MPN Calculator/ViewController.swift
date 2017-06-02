@@ -60,7 +60,7 @@ class ViewController: UIViewController {
             initialGuess()
             getLTermRTermConfidenceInterval()
             self.mpnLabelField.text = "\(Double(round(calculateActualMPN() * 1000) / 1000))"
-            self.lclLabelField.text = "\(Double(round(calculateLCL() * 1000) / 1000))"
+            self.lclLabelField.text = "\(Double(round(calculateLCL() * 1000) / 1000))" 
             self.uclLabelField.text = "\(Double(round(calculateUCL() * 1000) / 1000))"
             self.numberOfTubesArray.removeAll()
             self.numberOfPositivesArray.removeAll()
