@@ -22,9 +22,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var volume2: UITextField!
     @IBOutlet weak var volume3: UITextField!
     
-    @IBOutlet weak var lclLabel: UILabel!
-    @IBOutlet weak var uclLabel: UILabel!
-    @IBOutlet weak var mpnLabel: UILabel!
+    @IBOutlet weak var mpnLabelTitle: UILabel!
+    @IBOutlet weak var lclLabelTitle: UILabel!
+    @IBOutlet weak var uclLabelTitle: UILabel!
+    
+    @IBOutlet weak var lclLabelField: UILabel!
+    @IBOutlet weak var uclLabelField: UILabel!
+    @IBOutlet weak var mpnLabelField: UILabel!
 
     
     var numberOfPositivesArray = [Double]()
@@ -41,6 +45,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissNumpad))
         view.addGestureRecognizer(tap)
+        hide()
     }
     
     func dismissNumpad() {
@@ -54,18 +59,52 @@ class ViewController: UIViewController {
         } else {
             initialGuess()
             getLTermRTermConfidenceInterval()
-            self.mpnLabel.text = "\(Double(round(calculateActualMPN() * 1000) / 1000))"
-            self.lclLabel.text = "\(Double(round(calculateLCL() * 1000) / 1000))"
-            self.uclLabel.text = "\(Double(round(calculateUCL() * 1000) / 1000))"
+            self.mpnLabelField.text = "\(Double(round(calculateActualMPN() * 1000) / 1000))"
+            self.lclLabelField.text = "\(Double(round(calculateLCL() * 1000) / 1000))" 
+            self.uclLabelField.text = "\(Double(round(calculateUCL() * 1000) / 1000))"
             self.numberOfTubesArray.removeAll()
             self.numberOfPositivesArray.removeAll()
             self.volsInocArray.removeAll()
             self.mostProbableNumber = 0
             resetValues()
+            show()
         }
 
     }
     
+    @IBAction func clearButtonPressed(_ sender: Any) {
+        hide()
+        self.numberPositive1.text = ""
+        self.numberPositive2.text = ""
+        self.numberPositive3.text = ""
+        
+        self.numberTubes1.text = ""
+        self.numberTubes2.text = ""
+        self.numberTubes3.text = ""
+        
+        self.volume1.text = ""
+        self.volume2.text = ""
+        self.volume3.text = ""
+        
+    }
+    
+    func show() {
+        self.lclLabelField.isHidden = false
+        self.lclLabelTitle.isHidden = false
+        self.uclLabelField.isHidden = false
+        self.uclLabelTitle.isHidden = false
+        self.mpnLabelField.isHidden = false
+        self.mpnLabelTitle.isHidden = false
+    }
+    
+    func hide() {
+        self.lclLabelField.isHidden = true
+        self.lclLabelTitle.isHidden = true
+        self.uclLabelField.isHidden = true
+        self.uclLabelTitle.isHidden = true
+        self.mpnLabelField.isHidden = true
+        self.mpnLabelTitle.isHidden = true
+    }
     
     func initialGuess() {
         
