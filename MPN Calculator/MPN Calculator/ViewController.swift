@@ -59,9 +59,9 @@ class ViewController: UIViewController {
         } else {
             initialGuess()
             getLTermRTermConfidenceInterval()
-            self.mpnLabelField.text = "\(Double(round(calculateActualMPN() * 1000) / 1000))"
-            self.lclLabelField.text = "\(Double(round(calculateLCL() * 1000) / 1000))" 
-            self.uclLabelField.text = "\(Double(round(calculateUCL() * 1000) / 1000))"
+            self.mpnLabelField.text = "\(Double(round(calculateActualMPN() * 100) / 100))"
+            self.lclLabelField.text = "\(Double(round(calculateLCL() * 100) / 100))"
+            self.uclLabelField.text = "\(Double(round(calculateUCL() * 100) / 100))"
             self.numberOfTubesArray.removeAll()
             self.numberOfPositivesArray.removeAll()
             self.volsInocArray.removeAll()
@@ -175,7 +175,14 @@ class ViewController: UIViewController {
         self.confidenceInterval = 0
     }
     
+   
+    @IBAction func aboutButtonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "InfoViewController", sender: sender)
+    }
     
+    @IBAction func instructionsButtonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "InstructionsViewController", sender: sender)
+    }
     
 // Handling invalid entries
     func validateFields() -> Bool {
