@@ -175,7 +175,14 @@ class ViewController: UIViewController {
         self.confidenceInterval = 0
     }
     
+   
+    @IBAction func aboutButtonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "InfoViewController", sender: sender)
+    }
     
+    @IBAction func instructionsButtonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "InstructionsViewController", sender: sender)
+    }
     
 // Handling invalid entries
     func validateFields() -> Bool {

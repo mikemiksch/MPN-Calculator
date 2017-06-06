@@ -1,18 +1,18 @@
 //
-//  InfoViewController.swift
+//  InstructionsViewController.swift
 //  MPN Calculator
 //
-//  Created by Mike Miksch on 6/5/17.
+//  Created by Mike Miksch on 6/6/17.
 //  Copyright © 2017 Mike Miksch. All rights reserved.
 //
 
 import UIKit
 
-class InfoViewController: UIViewController {
+class InstructionsViewController: UIViewController {
 
-    @IBOutlet weak var textView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
+
     }
 
     override func didReceiveMemoryWarning() {
