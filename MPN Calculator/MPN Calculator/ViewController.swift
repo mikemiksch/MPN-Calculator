@@ -54,9 +54,7 @@ class ViewController: UIViewController {
     
     @IBAction func calculateButtonPressed(_ sender: Any) {
         let validation : Bool = validateFields()
-        if validation == false {
-            presentAlert()
-        } else {
+        if validation == true {
             initialGuess()
             getLTermRTermConfidenceInterval()
             self.mpnLabelField.text = "\(Double(round(calculateActualMPN() * 100) / 100))"
@@ -184,14 +182,27 @@ class ViewController: UIViewController {
         performSegue(withIdentifier: "InstructionsViewController", sender: sender)
     }
     
-// Handling invalid entries
     func validateFields() -> Bool {
+        var result = true
+        
+        if validateCompletion() == false {
+            presentCompletionAlert()
+            result = false
+        }
+        
+        if validateTubeCounts() == false {
+            presentTubeCountAlert()
+            result = false
+        }
+        
+        return result
+    }
+    
+// Handling invalid entries
+    func validateCompletion() -> Bool {
         let mandatoryFields = [numberPositive1, numberPositive2, numberPositive3, numberTubes1, numberTubes2, numberTubes3, volume1, volume2, volume3]
-        
         var result = Bool()
-        
-        //Need logic to handle .01 versus 0.01
-        
+
         for each in mandatoryFields {
             if each?.text == "" {
                 result = false
@@ -204,9 +215,28 @@ class ViewController: UIViewController {
 
     }
     
-    func presentAlert() {
+    func validateTubeCounts() -> Bool {
+        var result = Bool()
+        for (index, _) in self.numberOfPositivesArray.enumerated() {
+            if self.numberOfPositivesArray[index] > self.numberOfTubesArray[index] {
+                result = false
+            } else {
+                result = true
+            }
+        }
+        return result
+    }
+    
+    func presentCompletionAlert() {
         let alert = UIAlertController(title: nil, message: "Please complete all fields", preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:nil)
+        alert.addAction(ok)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func presentTubeCountAlert() {
+        let alert = UIAlertController(title: nil, message: "Number of positive tubes cannot exceed number of all tubes for its series", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
         alert.addAction(ok)
         self.present(alert, animated: true, completion: nil)
     }
