@@ -26,55 +26,55 @@
                             <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="light brushed metal texture silver platinum stock wallpaper" translatesAutoresizingMaskIntoConstraints="NO" id="DPX-mX-wFy">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="3" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="86h-HQ-uE7">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="3" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="86h-HQ-uE7" customClass="CustomTextField" customModule="MPN_Calculator" customModuleProvider="target">
                                 <rect key="frame" x="16" y="51.5" width="94" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="3" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wQe-hn-lUy">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="3" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wQe-hn-lUy" customClass="CustomTextField" customModule="MPN_Calculator" customModuleProvider="target">
                                 <rect key="frame" x="141" y="51.5" width="94" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="3" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fCT-k6-wVd">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="3" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fCT-k6-wVd" customClass="CustomTextField" customModule="MPN_Calculator" customModuleProvider="target">
                                 <rect key="frame" x="141" y="127.5" width="94" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="upL-YB-vk3">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="upL-YB-vk3" customClass="CustomTextField" customModule="MPN_Calculator" customModuleProvider="target">
                                 <rect key="frame" x="265" y="89.5" width="94" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="3" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vyy-tl-pUb">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="3" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vyy-tl-pUb" customClass="CustomTextField" customModule="MPN_Calculator" customModuleProvider="target">
                                 <rect key="frame" x="141" y="89.5" width="94" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fRk-BC-zMh">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fRk-BC-zMh" customClass="CustomTextField" customModule="MPN_Calculator" customModuleProvider="target">
                                 <rect key="frame" x="16" y="127.5" width="94" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5O3-N7-Amj">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5O3-N7-Amj" customClass="CustomTextField" customModule="MPN_Calculator" customModuleProvider="target">
                                 <rect key="frame" x="16" y="89.5" width="94" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.01" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iqz-Xe-8MP">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.01" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iqz-Xe-8MP" customClass="CustomTextField" customModule="MPN_Calculator" customModuleProvider="target">
                                 <rect key="frame" x="265" y="127.5" width="94" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nw1-Fc-8bD">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nw1-Fc-8bD" customClass="CustomTextField" customModule="MPN_Calculator" customModuleProvider="target">
                                 <rect key="frame" x="265" y="51.5" width="94" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -320,10 +320,10 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4GH-fa-JhT">
                                 <rect key="frame" x="16" y="118" width="343" height="305"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">(1) FDA Bacteriological Analytical Manual, October 2010, Appendix 2, Most Probable Number from Serial Dilutions.  
+                                <string key="text">(1) FDA Bacteriological Analytical Manual, October 2010, Appendix 2, Most Probable Number from Serial Dilutions.  
 (2) Russek, E. &amp; Colwell, R. R. Computation of most probable numbers. Applied and environmental microbiology 45, 1646–1650 (1983). 
 (3) Briones, A. M. &amp; Reichardt, W. Estimating microbial population counts by ‘most probable number’ using Microsoft Excel®. Journal of Microbiological Methods 35, 157–161 (1999).
-</mutableString>
+</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
@@ -415,7 +415,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yz4-Z4-g2E">
                                 <rect key="frame" x="16" y="86" width="343" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">A Most Probable Number (MPN) is an estimate of the mean density of viable microorganisms in a sample.  A microbiologist prepares a step series of dilutions of a sample in tubes to a point where tubes will sometimes, but not always, contain viable microorganisms.  Certain probability formulas (see references) are applied to the observed pattern of tubes containing viable microorganisms which consider the number of tubes and the dilution applied to the sample in each tube. 
+                                <string key="text">A Most Probable Number (MPN) is an estimate of the mean density of viable microorganisms in a sample.  A microbiologist prepares a step series of dilutions of a sample in tubes to a point where tubes will sometimes, but not always, contain viable microorganisms.  Certain probability formulas (see references) are applied to the observed pattern of tubes containing viable microorganisms which consider the number of tubes and the dilution applied to the sample in each tube. 
 An MPN can be computed for any positive number of tubes at any positive number of dilutions, but often serial dilutions use three or more dilutions and a decimal series (the volume of inoculum used for each row is one tenth as much of the original sample as the previous row.). To use the MPN Calculator, first select the tubes that will be used in the calculation.    1.) Remove negative rows:  First, remove the highest dilution (smallest sample volume) if it and the next lower dilution have all negative wells. As long as this condition holds and at least four dilutions remain, continue removing these dilutions. 
 2.)  If only three dilution rows remain, use them. 
 3.) If more than three dilution rows remain, then use the lowest volume of inoculum (highest dilution) row with all positive tubes, and the two following rows. 
@@ -423,7 +423,7 @@ An MPN can be computed for any positive number of tubes at any positive number o
 5.) Press Calculate.   6.) The Most Probable Number will be displayed which is the most likely estimate of the density of viable microorganisms in the sample. 
 7.) The Lower and Upper Confidence Limits will be displayed.  These represent the 95% confidence interval boundaries, meaning that there is a 95% probability that the ‘true’ density of viable microorganisms in the sample is within these limits. 
 8.) After performing a MPN calculation, press Clear to clear all data and enter a new set of data.
-</mutableString>
+</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>

@@ -10,17 +10,17 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var numberPositive1: UITextField!
-    @IBOutlet weak var numberPositive2: UITextField!
-    @IBOutlet weak var numberPositive3: UITextField!
+    @IBOutlet weak var numberPositive1: CustomTextField!
+    @IBOutlet weak var numberPositive2: CustomTextField!
+    @IBOutlet weak var numberPositive3: CustomTextField!
     
-    @IBOutlet weak var numberTubes1: UITextField!
-    @IBOutlet weak var numberTubes2: UITextField!
-    @IBOutlet weak var numberTubes3: UITextField!
+    @IBOutlet weak var numberTubes1: CustomTextField!
+    @IBOutlet weak var numberTubes2: CustomTextField!
+    @IBOutlet weak var numberTubes3: CustomTextField!
     
-    @IBOutlet weak var volume1: UITextField!
-    @IBOutlet weak var volume2: UITextField!
-    @IBOutlet weak var volume3: UITextField!
+    @IBOutlet weak var volume1: CustomTextField!
+    @IBOutlet weak var volume2: CustomTextField!
+    @IBOutlet weak var volume3: CustomTextField!
     
     @IBOutlet weak var mpnLabelTitle: UILabel!
     @IBOutlet weak var lclLabelTitle: UILabel!
