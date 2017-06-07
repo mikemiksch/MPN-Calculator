@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var numberPositive1: CustomTextField!
     @IBOutlet weak var numberPositive2: CustomTextField!
@@ -43,6 +43,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.volume1.delegate = self
+        self.volume2.delegate = self
+        self.volume3.delegate = self
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissNumpad))
         view.addGestureRecognizer(tap)
         hide()
@@ -190,7 +193,7 @@ class ViewController: UIViewController {
             self.numberOfTubesArray = [Double(numberTubes1.text!)!, Double(numberTubes2.text!)!, Double(numberTubes3.text!)!]
             self.volsInocArray = [Double(checkDecimal(input: volume1)!)!, Double(checkDecimal(input: volume2)!)!, Double(checkDecimal(input: volume3)!)!]
         }
-        
+
         if validateTubeCounts() == false {
             presentTubeCountAlert()
             result = false
@@ -205,7 +208,7 @@ class ViewController: UIViewController {
         return result
     }
     
-// Handling invalid entries
+//MARK: Handling invalid entries
     
     func checkDecimal(input: CustomTextField!) -> String? {
         if var inputText = input.text {
@@ -241,19 +244,20 @@ class ViewController: UIViewController {
         return result
     }
     
+
     func validateVolumeValues() -> Bool {
         var result = true
-        if let volume1Text = self.volume1.text, let volume2Text = self.volume2.text, let volume3Text = self.volume3.text {
-            if let volume1Dbl = Double(volume1Text), let volume2Dbl = Double(volume2Text), let volume3Dbl = Double(volume3Text) {
-                if volume1Dbl <= volume2Dbl || volume2Dbl <= volume3Dbl {
-                    result = false
-                }
-                
+        let lastIdx = volsInocArray.count - 1
+        for i in 1...lastIdx {
+            if volsInocArray[i] >= volsInocArray[i - 1] {
+                result = false
             }
         }
         return result
     }
     
+    
+//MARK: Invalid entry alerts
     func presentCompletionAlert() {
         let alert = UIAlertController(title: nil, message: "Please complete all fields", preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:nil)
@@ -273,6 +277,34 @@ class ViewController: UIViewController {
         let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
         alert.addAction(ok)
         self.present(alert, animated: true, completion: nil)
+    }
+    
+//MARK: Text field delegate code
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        switch string {
+        case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9":
+            return true
+        case "." :
+            let inputArray = Array(textField.text!.characters)
+            var decimalCount = 0
+            for character in inputArray {
+                if character == "." {
+                    decimalCount += 1
+                }
+            }
+            
+            if decimalCount == 1 {
+                return false
+            } else {
+                return true
+            }
+        default:
+            let inputArray = Array(string.characters)
+            if inputArray.count == 0 {
+                return true
+            }
+            return false
+        }
     }
 
 }
