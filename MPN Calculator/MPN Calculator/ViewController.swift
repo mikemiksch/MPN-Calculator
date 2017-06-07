@@ -8,19 +8,19 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var numberPositive1: UITextField!
-    @IBOutlet weak var numberPositive2: UITextField!
-    @IBOutlet weak var numberPositive3: UITextField!
+    @IBOutlet weak var numberPositive1: CustomTextField!
+    @IBOutlet weak var numberPositive2: CustomTextField!
+    @IBOutlet weak var numberPositive3: CustomTextField!
     
-    @IBOutlet weak var numberTubes1: UITextField!
-    @IBOutlet weak var numberTubes2: UITextField!
-    @IBOutlet weak var numberTubes3: UITextField!
+    @IBOutlet weak var numberTubes1: CustomTextField!
+    @IBOutlet weak var numberTubes2: CustomTextField!
+    @IBOutlet weak var numberTubes3: CustomTextField!
     
-    @IBOutlet weak var volume1: UITextField!
-    @IBOutlet weak var volume2: UITextField!
-    @IBOutlet weak var volume3: UITextField!
+    @IBOutlet weak var volume1: CustomTextField!
+    @IBOutlet weak var volume2: CustomTextField!
+    @IBOutlet weak var volume3: CustomTextField!
     
     @IBOutlet weak var mpnLabelTitle: UILabel!
     @IBOutlet weak var lclLabelTitle: UILabel!
@@ -43,6 +43,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.volume1.delegate = self
+        self.volume2.delegate = self
+        self.volume3.delegate = self
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissNumpad))
         view.addGestureRecognizer(tap)
         hide()
@@ -54,9 +57,7 @@ class ViewController: UIViewController {
     
     @IBAction func calculateButtonPressed(_ sender: Any) {
         let validation : Bool = validateFields()
-        if validation == false {
-            presentAlert()
-        } else {
+        if validation == true {
             initialGuess()
             getLTermRTermConfidenceInterval()
             self.mpnLabelField.text = "\(Double(round(calculateActualMPN() * 100) / 100))"
@@ -107,11 +108,6 @@ class ViewController: UIViewController {
     }
     
     func initialGuess() {
-        
-        self.numberOfPositivesArray = [Double(numberPositive1.text!)!, Double(numberPositive2.text!)!, Double(numberPositive3.text!)!]
-        self.numberOfTubesArray = [Double(numberTubes1.text!)!, Double(numberTubes2.text!)!, Double(numberTubes3.text!)!]
-        self.volsInocArray = [Double(volume1.text!)!, Double(volume2.text!)!, Double(volume3.text!)!]
-        
         var positives = Double()
         var tubes = Double()
         var vol = Double()
@@ -184,19 +180,53 @@ class ViewController: UIViewController {
         performSegue(withIdentifier: "InstructionsViewController", sender: sender)
     }
     
-// Handling invalid entries
     func validateFields() -> Bool {
+        var result = true
+        print("This is the validate value when you first press calculate button: \(result)")
+        
+        
+        if validateCompletion() == false {
+            presentCompletionAlert()
+            result = false
+        } else {
+            self.numberOfPositivesArray = [Double(numberPositive1.text!)!, Double(numberPositive2.text!)!, Double(numberPositive3.text!)!]
+            self.numberOfTubesArray = [Double(numberTubes1.text!)!, Double(numberTubes2.text!)!, Double(numberTubes3.text!)!]
+            self.volsInocArray = [Double(checkDecimal(input: volume1)!)!, Double(checkDecimal(input: volume2)!)!, Double(checkDecimal(input: volume3)!)!]
+        }
+
+        if validateTubeCounts() == false {
+            presentTubeCountAlert()
+            result = false
+        }
+        
+        if validateVolumeValues() == false {
+            presentVolumeAlert()
+            result = false
+        }
+        
+        print("This is the validate value after it runs: \(result)")
+        return result
+    }
+    
+//MARK: Handling invalid entries
+    
+    func checkDecimal(input: CustomTextField!) -> String? {
+        if var inputText = input.text {
+            if inputText.characters.first == "."  {
+                inputText.insert("0", at: inputText.startIndex)
+            }
+            return inputText
+        }
+        return nil
+    }
+    
+    func validateCompletion() -> Bool {
         let mandatoryFields = [numberPositive1, numberPositive2, numberPositive3, numberTubes1, numberTubes2, numberTubes3, volume1, volume2, volume3]
-        
-        var result = Bool()
-        
-        //Need logic to handle .01 versus 0.01
-        
+        var result = true
+
         for each in mandatoryFields {
             if each?.text == "" {
                 result = false
-            } else {
-                result = true
             }
         }
         
@@ -204,11 +234,77 @@ class ViewController: UIViewController {
 
     }
     
-    func presentAlert() {
+    func validateTubeCounts() -> Bool {
+        var result = true
+        for (index, _) in self.numberOfPositivesArray.enumerated() {
+            if self.numberOfPositivesArray[index] > self.numberOfTubesArray[index] {
+                result = false
+            }
+        }
+        return result
+    }
+    
+
+    func validateVolumeValues() -> Bool {
+        var result = true
+        let lastIdx = volsInocArray.count - 1
+        for i in 1...lastIdx {
+            if volsInocArray[i] >= volsInocArray[i - 1] {
+                result = false
+            }
+        }
+        return result
+    }
+    
+    
+//MARK: Invalid entry alerts
+    func presentCompletionAlert() {
         let alert = UIAlertController(title: nil, message: "Please complete all fields", preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:nil)
         alert.addAction(ok)
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func presentTubeCountAlert() {
+        let alert = UIAlertController(title: nil, message: "Number of positive tubes cannot exceed number of all tubes for its series", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
+        alert.addAction(ok)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func presentVolumeAlert() {
+        let alert = UIAlertController(title: nil, message: "Invalid volumes", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
+        alert.addAction(ok)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+//MARK: Text field delegate code
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        switch string {
+        case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9":
+            return true
+        case "." :
+            let inputArray = Array(textField.text!.characters)
+            var decimalCount = 0
+            for character in inputArray {
+                if character == "." {
+                    decimalCount += 1
+                }
+            }
+            
+            if decimalCount == 1 {
+                return false
+            } else {
+                return true
+            }
+        default:
+            let inputArray = Array(string.characters)
+            if inputArray.count == 0 {
+                return true
+            }
+            return false
+        }
     }
 
 }

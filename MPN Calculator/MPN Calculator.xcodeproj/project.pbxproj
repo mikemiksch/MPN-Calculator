@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		83786BEC1EE61ECD004620DA /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83786BEB1EE61ECD004620DA /* InfoViewController.swift */; };
 		83786BEE1EE750D5004620DA /* InstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83786BED1EE750D5004620DA /* InstructionsViewController.swift */; };
+		8385B25A1EE869A200B4439C /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8385B2591EE869A200B4439C /* CustomTextField.swift */; };
 		83F890E91ED6263A005799A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F890E81ED6263A005799A2 /* AppDelegate.swift */; };
 		83F890EB1ED6263A005799A2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F890EA1ED6263A005799A2 /* ViewController.swift */; };
 		83F890EE1ED6263A005799A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83F890EC1ED6263A005799A2 /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 /* Begin PBXFileReference section */
 		83786BEB1EE61ECD004620DA /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		83786BED1EE750D5004620DA /* InstructionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionsViewController.swift; sourceTree = "<group>"; };
+		8385B2591EE869A200B4439C /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		83F890E51ED6263A005799A2 /* MPN Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MPN Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		83F890E81ED6263A005799A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83F890EA1ED6263A005799A2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				83F890E81ED6263A005799A2 /* AppDelegate.swift */,
+				8385B2591EE869A200B4439C /* CustomTextField.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 				83786BEC1EE61ECD004620DA /* InfoViewController.swift in Sources */,
 				83786BEE1EE750D5004620DA /* InstructionsViewController.swift in Sources */,
 				83F890E91ED6263A005799A2 /* AppDelegate.swift in Sources */,
+				8385B25A1EE869A200B4439C /* CustomTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
