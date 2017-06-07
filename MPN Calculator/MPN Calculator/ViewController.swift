@@ -184,6 +184,8 @@ class ViewController: UIViewController {
     
     func validateFields() -> Bool {
         var result = true
+        print("This is the validate value when you first press calculate button: \(result)")
+        
         
         if validateCompletion() == false {
             presentCompletionAlert()
@@ -195,19 +197,23 @@ class ViewController: UIViewController {
             result = false
         }
         
+        if validateVolumeValues() == false {
+            presentVolumeAlert()
+            result = false
+        }
+        
+        print("This is the validate value after it runs: \(result)")
         return result
     }
     
 // Handling invalid entries
     func validateCompletion() -> Bool {
         let mandatoryFields = [numberPositive1, numberPositive2, numberPositive3, numberTubes1, numberTubes2, numberTubes3, volume1, volume2, volume3]
-        var result = Bool()
+        var result = true
 
         for each in mandatoryFields {
             if each?.text == "" {
                 result = false
-            } else {
-                result = true
             }
         }
         
@@ -216,12 +222,25 @@ class ViewController: UIViewController {
     }
     
     func validateTubeCounts() -> Bool {
-        var result = Bool()
-        for (index, _) in self.numberOfPositivesArray.enumerated() {
-            if self.numberOfPositivesArray[index] > self.numberOfTubesArray[index] {
-                result = false
-            } else {
-                result = true
+        var result = true
+        if let positives1Text = self.numberPositive1.text, let positives2Text = self.numberPositive2.text, let positives3Text = self.numberPositive3.text, let numberTubes1Text = self.numberTubes1.text, let numberTubes2Text = self.numberTubes2.text, let numberTubes3Text = self.numberTubes3.text {
+            if let positives1Dbl = Double(positives1Text), let positives2Dbl = Double(positives2Text), let positives3Dbl = Double(positives3Text), let numberTubes1Dbl = Double(numberTubes1Text), let numberTubes2Dbl = Double(numberTubes2Text), let numberTubes3Dbl = Double(numberTubes3Text) {
+                if positives1Dbl > numberTubes1Dbl || positives2Dbl > numberTubes2Dbl || positives3Dbl > numberTubes3Dbl {
+                    result = false
+                }
+            }
+        }
+        return result
+    }
+    
+    func validateVolumeValues() -> Bool {
+        var result = true
+        if let volume1Text = self.volume1.text, let volume2Text = self.volume2.text, let volume3Text = self.volume3.text {
+            if let volume1Dbl = Double(volume1Text), let volume2Dbl = Double(volume2Text), let volume3Dbl = Double(volume3Text) {
+                if volume1Dbl <= volume2Dbl || volume2Dbl <= volume3Dbl {
+                    result = false
+                }
+                
             }
         }
         return result
@@ -236,6 +255,13 @@ class ViewController: UIViewController {
     
     func presentTubeCountAlert() {
         let alert = UIAlertController(title: nil, message: "Number of positive tubes cannot exceed number of all tubes for its series", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
+        alert.addAction(ok)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func presentVolumeAlert() {
+        let alert = UIAlertController(title: nil, message: "Invalid volumes", preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
         alert.addAction(ok)
         self.present(alert, animated: true, completion: nil)
