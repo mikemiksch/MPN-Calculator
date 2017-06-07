@@ -105,11 +105,6 @@ class ViewController: UIViewController {
     }
     
     func initialGuess() {
-        
-        self.numberOfPositivesArray = [Double(numberPositive1.text!)!, Double(numberPositive2.text!)!, Double(numberPositive3.text!)!]
-        self.numberOfTubesArray = [Double(numberTubes1.text!)!, Double(numberTubes2.text!)!, Double(numberTubes3.text!)!]
-        self.volsInocArray = [Double(volume1.text!)!, Double(volume2.text!)!, Double(volume3.text!)!]
-        
         var positives = Double()
         var tubes = Double()
         var vol = Double()
@@ -190,6 +185,10 @@ class ViewController: UIViewController {
         if validateCompletion() == false {
             presentCompletionAlert()
             result = false
+        } else {
+            self.numberOfPositivesArray = [Double(numberPositive1.text!)!, Double(numberPositive2.text!)!, Double(numberPositive3.text!)!]
+            self.numberOfTubesArray = [Double(numberTubes1.text!)!, Double(numberTubes2.text!)!, Double(numberTubes3.text!)!]
+            self.volsInocArray = [Double(checkDecimal(input: volume1)!)!, Double(checkDecimal(input: volume2)!)!, Double(checkDecimal(input: volume3)!)!]
         }
         
         if validateTubeCounts() == false {
@@ -207,6 +206,17 @@ class ViewController: UIViewController {
     }
     
 // Handling invalid entries
+    
+    func checkDecimal(input: CustomTextField!) -> String? {
+        if var inputText = input.text {
+            if inputText.characters.first == "."  {
+                inputText.insert("0", at: inputText.startIndex)
+            }
+            return inputText
+        }
+        return nil
+    }
+    
     func validateCompletion() -> Bool {
         let mandatoryFields = [numberPositive1, numberPositive2, numberPositive3, numberTubes1, numberTubes2, numberTubes3, volume1, volume2, volume3]
         var result = true
@@ -223,11 +233,9 @@ class ViewController: UIViewController {
     
     func validateTubeCounts() -> Bool {
         var result = true
-        if let positives1Text = self.numberPositive1.text, let positives2Text = self.numberPositive2.text, let positives3Text = self.numberPositive3.text, let numberTubes1Text = self.numberTubes1.text, let numberTubes2Text = self.numberTubes2.text, let numberTubes3Text = self.numberTubes3.text {
-            if let positives1Dbl = Double(positives1Text), let positives2Dbl = Double(positives2Text), let positives3Dbl = Double(positives3Text), let numberTubes1Dbl = Double(numberTubes1Text), let numberTubes2Dbl = Double(numberTubes2Text), let numberTubes3Dbl = Double(numberTubes3Text) {
-                if positives1Dbl > numberTubes1Dbl || positives2Dbl > numberTubes2Dbl || positives3Dbl > numberTubes3Dbl {
-                    result = false
-                }
+        for (index, _) in self.numberOfPositivesArray.enumerated() {
+            if self.numberOfPositivesArray[index] > self.numberOfTubesArray[index] {
+                result = false
             }
         }
         return result
