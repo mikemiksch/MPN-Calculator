@@ -112,17 +112,26 @@ class ViewController: UIViewController, UITextFieldDelegate {
         var tubes = Double()
         var vol = Double()
         
+        let firstRowPositives = self.numberOfPositivesArray[0]
+        let firstRowTubes = self.numberOfTubesArray[0]
+        let secondRowPositives = self.numberOfPositivesArray[1]
+        let firstRowVol = self.volsInocArray[0]
         
-        for (index, value) in self.numberOfPositivesArray.enumerated() {
-            if 0 < value && value < self.numberOfTubesArray[index] {
-                positives = value
-                tubes = self.numberOfTubesArray[index]
-                vol = self.volsInocArray[index]
-                break
+        if firstRowPositives == firstRowTubes && secondRowPositives == 0 {
+            self.mostProbableNumber = 1 / firstRowVol
+        } else {
+            for (index, value) in self.numberOfPositivesArray.enumerated() {
+                if 0 < value && value < self.numberOfTubesArray[index] {
+                    positives = value
+                    tubes = self.numberOfTubesArray[index]
+                    vol = self.volsInocArray[index]
+                    break
+                }
             }
+            self.mostProbableNumber = -(1.0 / vol) * log10((tubes-positives) / tubes)
         }
 
-        self.mostProbableNumber = -(1.0 / vol) * log10((tubes-positives) / tubes)
+
     }
     
     func getLTermRTermConfidenceInterval() {
