@@ -1,8 +1,9 @@
 {
   "images" : [
     {
-      "idiom" : "iphone",
       "size" : "20x20",
+      "idiom" : "iphone",
+      "filename" : "Icon-App-20x20@2x-1.png",
       "scale" : "2x"
     },
     {
@@ -30,8 +31,9 @@
       "scale" : "3x"
     },
     {
-      "idiom" : "iphone",
       "size" : "40x40",
+      "idiom" : "iphone",
+      "filename" : "Icon-App-40x40@2x-1.png",
       "scale" : "2x"
     },
     {
@@ -55,12 +57,13 @@
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "calculator-icon120.png",
+      "filename" : "Icon-App-60x60@2x-1.png",
       "scale" : "2x"
     },
     {
-      "idiom" : "iphone",
       "size" : "60x60",
+      "idiom" : "iphone",
+      "filename" : "Icon-App-60x60@3x-1.png",
       "scale" : "3x"
     },
     {
@@ -76,13 +79,15 @@
       "scale" : "2x"
     },
     {
-      "idiom" : "ipad",
       "size" : "29x29",
+      "idiom" : "ipad",
+      "filename" : "Icon-App-29x29@1x-1.png",
       "scale" : "1x"
     },
     {
-      "idiom" : "ipad",
       "size" : "29x29",
+      "idiom" : "ipad",
+      "filename" : "Icon-App-29x29@2x-1.png",
       "scale" : "2x"
     },
     {
@@ -98,23 +103,27 @@
       "scale" : "2x"
     },
     {
-      "idiom" : "ipad",
       "size" : "50x50",
+      "idiom" : "ipad",
+      "filename" : "Icon-Small-50x50@1x.png",
       "scale" : "1x"
     },
     {
-      "idiom" : "ipad",
       "size" : "50x50",
+      "idiom" : "ipad",
+      "filename" : "Icon-Small-50x50@2x.png",
       "scale" : "2x"
     },
     {
-      "idiom" : "ipad",
       "size" : "72x72",
+      "idiom" : "ipad",
+      "filename" : "Icon-App-72x72@1x.png",
       "scale" : "1x"
     },
     {
-      "idiom" : "ipad",
       "size" : "72x72",
+      "idiom" : "ipad",
+      "filename" : "Icon-App-72x72@2x.png",
       "scale" : "2x"
     },
     {
@@ -144,7 +153,7 @@
     {
       "size" : "60x60",
       "idiom" : "car",
-      "filename" : "Icon-App-60x60@3x.png",
+      "filename" : "Icon-App-29x29@3x-1.png",
       "scale" : "3x"
     },
     {
