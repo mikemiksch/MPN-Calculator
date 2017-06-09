@@ -449,6 +449,7 @@
 				8385B2951EEB00BA00B4439C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		83F890E01ED6263A005799A2 /* Build configuration list for PBXProject "MPN Calculator" */ = {
 			isa = XCConfigurationList;

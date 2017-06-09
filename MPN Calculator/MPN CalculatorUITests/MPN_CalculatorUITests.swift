@@ -34,6 +34,28 @@ class MPN_CalculatorUITests: XCTestCase {
     func testExample() {
         // Use recording to get started writing UI tests.
         
+        let app = XCUIApplication()
+        app.icons["MPN Calc"].tap()
+        snapshot("TitleScreen")
+        
+        
+        let element = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element
+        element.tap()
+        snapshot("01")
+        
+        let deleteKey = app.keys["Delete"]
+        deleteKey.tap()
+        deleteKey.tap()
+        snapshot("02")
+        app.typeText("1")
+        snapshot("03")
+        element.tap()
+        snapshot("04")
+        element.tap()
+        snapshot("05")
+        element.tap()
+        snapshot("06")
+        
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     

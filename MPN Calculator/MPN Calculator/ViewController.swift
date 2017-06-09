@@ -154,9 +154,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
             getLTermRTermConfidenceInterval()
             newMPN = self.mostProbableNumber * pow(10, (1-self.rTermSum/self.lTermSum))
         }
-        print(self.lTermSum)
-        print(self.rTermSum)
-        print(self.confidenceInterval)
         self.mostProbableNumber = newMPN
         return self.mostProbableNumber
     }
@@ -191,8 +188,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func validateFields() -> Bool {
         var result = true
-        print("This is the validate value when you first press calculate button: \(result)")
-        
         
         if validateCompletion() == false {
             presentCompletionAlert()
@@ -213,7 +208,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
             }
         }
         
-        print("This is the validate value after it runs: \(result)")
         return result
     }
     
