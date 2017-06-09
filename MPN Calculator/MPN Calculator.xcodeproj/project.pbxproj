@@ -10,6 +10,8 @@
 		83786BEC1EE61ECD004620DA /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83786BEB1EE61ECD004620DA /* InfoViewController.swift */; };
 		83786BEE1EE750D5004620DA /* InstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83786BED1EE750D5004620DA /* InstructionsViewController.swift */; };
 		8385B25A1EE869A200B4439C /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8385B2591EE869A200B4439C /* CustomTextField.swift */; };
+		8385B28F1EEB00BA00B4439C /* MPN_CalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8385B28E1EEB00BA00B4439C /* MPN_CalculatorUITests.swift */; };
+		8385B2971EEB013E00B4439C /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8385B2961EEB013E00B4439C /* SnapshotHelper.swift */; };
 		83F890E91ED6263A005799A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F890E81ED6263A005799A2 /* AppDelegate.swift */; };
 		83F890EB1ED6263A005799A2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F890EA1ED6263A005799A2 /* ViewController.swift */; };
 		83F890EE1ED6263A005799A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83F890EC1ED6263A005799A2 /* Main.storyboard */; };
@@ -17,10 +19,24 @@
 		83F890F31ED6263A005799A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83F890F11ED6263A005799A2 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		8385B2911EEB00BA00B4439C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83F890DD1ED6263A005799A2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 83F890E41ED6263A005799A2;
+			remoteInfo = "MPN Calculator";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		83786BEB1EE61ECD004620DA /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		83786BED1EE750D5004620DA /* InstructionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionsViewController.swift; sourceTree = "<group>"; };
 		8385B2591EE869A200B4439C /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		8385B28C1EEB00B900B4439C /* MPN CalculatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MPN CalculatorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8385B28E1EEB00BA00B4439C /* MPN_CalculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPN_CalculatorUITests.swift; sourceTree = "<group>"; };
+		8385B2901EEB00BA00B4439C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8385B2961EEB013E00B4439C /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		83F890E51ED6263A005799A2 /* MPN Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MPN Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		83F890E81ED6263A005799A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83F890EA1ED6263A005799A2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -31,6 +47,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8385B2891EEB00B900B4439C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		83F890E21ED6263A005799A2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -41,10 +64,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8385B28D1EEB00BA00B4439C /* MPN CalculatorUITests */ = {
+			isa = PBXGroup;
+			children = (
+				8385B2961EEB013E00B4439C /* SnapshotHelper.swift */,
+				8385B28E1EEB00BA00B4439C /* MPN_CalculatorUITests.swift */,
+				8385B2901EEB00BA00B4439C /* Info.plist */,
+			);
+			path = "MPN CalculatorUITests";
+			sourceTree = "<group>";
+		};
 		83F890DC1ED6263A005799A2 = {
 			isa = PBXGroup;
 			children = (
 				83F890E71ED6263A005799A2 /* MPN Calculator */,
+				8385B28D1EEB00BA00B4439C /* MPN CalculatorUITests */,
 				83F890E61ED6263A005799A2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				83F890E51ED6263A005799A2 /* MPN Calculator.app */,
+				8385B28C1EEB00B900B4439C /* MPN CalculatorUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -108,6 +143,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		8385B28B1EEB00B900B4439C /* MPN CalculatorUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8385B2931EEB00BA00B4439C /* Build configuration list for PBXNativeTarget "MPN CalculatorUITests" */;
+			buildPhases = (
+				8385B2881EEB00B900B4439C /* Sources */,
+				8385B2891EEB00B900B4439C /* Frameworks */,
+				8385B28A1EEB00B900B4439C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8385B2921EEB00BA00B4439C /* PBXTargetDependency */,
+			);
+			name = "MPN CalculatorUITests";
+			productName = "MPN CalculatorUITests";
+			productReference = 8385B28C1EEB00B900B4439C /* MPN CalculatorUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		83F890E41ED6263A005799A2 /* MPN Calculator */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 83F890F71ED6263A005799A2 /* Build configuration list for PBXNativeTarget "MPN Calculator" */;
@@ -135,6 +188,12 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Mike Miksch";
 				TargetAttributes = {
+					8385B28B1EEB00B900B4439C = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = HDU39LZWX7;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 83F890E41ED6263A005799A2;
+					};
 					83F890E41ED6263A005799A2 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = HDU39LZWX7;
@@ -156,11 +215,19 @@
 			projectRoot = "";
 			targets = (
 				83F890E41ED6263A005799A2 /* MPN Calculator */,
+				8385B28B1EEB00B900B4439C /* MPN CalculatorUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8385B28A1EEB00B900B4439C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		83F890E31ED6263A005799A2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -174,6 +241,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8385B2881EEB00B900B4439C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8385B28F1EEB00BA00B4439C /* MPN_CalculatorUITests.swift in Sources */,
+				8385B2971EEB013E00B4439C /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		83F890E11ED6263A005799A2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -187,6 +263,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8385B2921EEB00BA00B4439C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 83F890E41ED6263A005799A2 /* MPN Calculator */;
+			targetProxy = 8385B2911EEB00BA00B4439C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		83F890EC1ED6263A005799A2 /* Main.storyboard */ = {
@@ -208,6 +292,32 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		8385B2941EEB00BA00B4439C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = HDU39LZWX7;
+				INFOPLIST_FILE = "MPN CalculatorUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mikemiksch.MPN-CalculatorUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = "MPN Calculator";
+			};
+			name = Debug;
+		};
+		8385B2951EEB00BA00B4439C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = HDU39LZWX7;
+				INFOPLIST_FILE = "MPN CalculatorUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mikemiksch.MPN-CalculatorUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = "MPN Calculator";
+			};
+			name = Release;
+		};
 		83F890F51ED6263A005799A2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -332,6 +442,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8385B2931EEB00BA00B4439C /* Build configuration list for PBXNativeTarget "MPN CalculatorUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8385B2941EEB00BA00B4439C /* Debug */,
+				8385B2951EEB00BA00B4439C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		83F890E01ED6263A005799A2 /* Build configuration list for PBXProject "MPN Calculator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -201,16 +201,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
             self.numberOfPositivesArray = [Double(numberPositive1.text!)!, Double(numberPositive2.text!)!, Double(numberPositive3.text!)!]
             self.numberOfTubesArray = [Double(numberTubes1.text!)!, Double(numberTubes2.text!)!, Double(numberTubes3.text!)!]
             self.volsInocArray = [Double(checkDecimal(input: volume1)!)!, Double(checkDecimal(input: volume2)!)!, Double(checkDecimal(input: volume3)!)!]
-        }
-
-        if validateTubeCounts() == false {
-            presentTubeCountAlert()
-            result = false
-        }
-        
-        if validateVolumeValues() == false {
-            presentVolumeAlert()
-            result = false
+            
+            if validateTubeCounts() == false {
+                presentTubeCountAlert()
+                result = false
+            }
+            
+            if validateVolumeValues() == false {
+                presentVolumeAlert()
+                result = false
+            }
         }
         
         print("This is the validate value after it runs: \(result)")
