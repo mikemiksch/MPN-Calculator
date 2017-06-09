@@ -43,6 +43,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.numberPositive1.delegate = self
+        self.numberPositive2.delegate = self
+        self.numberPositive3.delegate = self
+        self.numberTubes1.delegate = self
+        self.numberTubes2.delegate = self
+        self.numberTubes3.delegate = self
         self.volume1.delegate = self
         self.volume2.delegate = self
         self.volume3.delegate = self
