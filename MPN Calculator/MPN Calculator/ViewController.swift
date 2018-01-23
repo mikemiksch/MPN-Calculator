@@ -57,7 +57,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         hide()
     }
     
-    func dismissNumpad() {
+    @objc func dismissNumpad() {
         view.endEditing(true)
     }
     
@@ -221,7 +221,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func checkDecimal(input: CustomTextField!) -> String? {
         if var inputText = input.text {
-            if inputText.characters.first == "."  {
+            if inputText.first == "." {
+//            if inputText.characters.first == "."  {
                 inputText.insert("0", at: inputText.startIndex)
             }
             return inputText
@@ -294,9 +295,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9":
             return true
         case "." :
-            let inputArray = Array(textField.text!.characters)
+//            let inputArray = Array(textField.text!)
+//            let inputArray = Array(textField.text!.characters)
             var decimalCount = 0
-            for character in inputArray {
+            for character in textField.text! {
                 if character == "." {
                     decimalCount += 1
                 }
@@ -308,8 +310,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 return true
             }
         default:
-            let inputArray = Array(string.characters)
-            if inputArray.count == 0 {
+//            let inputArray = Array(string.characters)
+//            if inputArray.count == 0 {
+            if string.count == 0 {
                 return true
             }
             return false
