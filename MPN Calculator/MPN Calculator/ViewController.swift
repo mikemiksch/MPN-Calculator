@@ -75,6 +75,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             self.mostProbableNumber = 0
             resetValues()
             show()
+            dismissNumpad()
         }
 
     }
